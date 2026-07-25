@@ -35,7 +35,7 @@ Managed as a pnpm workspace.
 - [x] Backend: unit tests for the store, with coverage reporting
 
 ### Phase 1.5 — CI foundation
-- [ ] GitHub Actions running backend unit tests on push to main
+- [x] GitHub Actions running backend unit tests on push to main
 
 ### Phase 2 — React UI & component tests
 - [ ] Frontend: task list UI (add/list/delete)
