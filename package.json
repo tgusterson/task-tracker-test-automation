@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "playwright-portfolio",
+  "name": "task-tracker-test-automation",
   "version": "0.0.1",
   "devDependencies": {
     "@vitest/coverage-v8": "4.1.10",
