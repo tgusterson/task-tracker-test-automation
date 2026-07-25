@@ -45,9 +45,7 @@ Managed as a pnpm workspace.
   - [ ] Parallel test execution across workers
   - [ ] Upload Playwright HTML report / traces / screenshots as artifacts on
         failure, for debugging straight from a failed run
-- [ ] README polish once the above exists: architecture diagram, "why
-      Playwright over Cypress/Selenium," screenshots of a passing pipeline
-      and the Playwright HTML report
+- [ ] README polish once the above exists: architecture diagram, Playwright HTML report
 
 ## Running locally
 
@@ -76,5 +74,5 @@ Integration and e2e test commands will be added here as those layers land.
 ## Why this exists
 
 Built as a portfolio piece to show practical test automation ability: writing
-meaningful unit tests (not just coverage padding), testing a real API
+meaningful unit tests, testing a real API
 end-to-end, driving a UI with Playwright, and tying it all together in CI.
