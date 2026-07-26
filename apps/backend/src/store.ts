@@ -1,4 +1,4 @@
-import { Task } from "./types";
+import { Task } from "@workspace/shared";
 import { randomUUID } from "crypto";
 
 let tasks: Task[] = [];
@@ -30,4 +30,8 @@ export const updateTask = (id: string, updatedTask: Partial<Task>) => {
 };
 export const deleteTask = (id: string) => {
   tasks = tasks.filter((task) => task.id !== id);
+  if (!tasks.find((task) => task.id === id)) {
+    return { message: `Task with id ${id} deleted` };
+  }
+  return { message: `Task with id ${id} not found` };
 };
