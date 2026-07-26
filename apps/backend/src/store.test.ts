@@ -52,6 +52,16 @@ describe("Task Store", () => {
     });
   });
 
+  it("should preserve title if not provided during update", () => {
+    const task = store.addTask("Task to Update");
+    const updatedTask = store.updateTask(task.id, { completed: true });
+    expect(updatedTask).toEqual({
+      id: task.id,
+      title: "Task to Update",
+      completed: true,
+    });
+  });
+
   it("should not update a non-existent task", () => {
     const task = store.addTask("Task to Update");
     store.updateTask("non-existent-id", { title: "Updated Task" });

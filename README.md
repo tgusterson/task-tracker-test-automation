@@ -46,6 +46,7 @@ Managed as a pnpm workspace.
 ### Phase 3 — Integration & e2e tests
 - [ ] Integration tests against the API — including sad-path cases (bad
       payloads, missing fields → correct 400/500 responses), not just happy path
+      (e.g. PATCH /tasks/:id with only `completed` must not wipe `title`)
 - [ ] End-to-end tests (Playwright), full flow from UI to API
 - [ ] CI updated to run the Playwright suite
 

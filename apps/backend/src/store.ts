@@ -20,8 +20,11 @@ export const addTask = (title: string) => {
   return task;
 };
 export const updateTask = (id: string, updatedTask: Partial<Task>) => {
+  const updates = Object.fromEntries(
+    Object.entries(updatedTask).filter(([, v]) => v !== undefined),
+  ) as Partial<Task>;
   tasks = tasks.map((task) =>
-    task.id === id ? { ...task, ...updatedTask } : task,
+    task.id === id ? { ...task, ...updates } : task,
   );
   return tasks.find((task) => task.id === id);
 };
