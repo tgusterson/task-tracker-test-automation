@@ -1,6 +1,7 @@
 import React from "react";
 import { Task } from "@workspace/shared";
-import { addTask, getTasks } from "./api";
+import { addTask, deleteTask, getTasks, updateTask } from "./api";
+import { TaskForm } from "./TaskForm";
 import { TaskList } from "./TaskList";
 
 const App = () => {
@@ -8,15 +9,24 @@ const App = () => {
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string | null>(null);
 
-  const onAddTask = () => {
-    const title = prompt("Enter task title:");
-    if (title) {
-      setLoading(true);
-      addTask(title)
-        .then((newTask) => setTasks((prev) => [...prev, newTask]))
-        .catch((err) => setError(err.message))
-        .finally(() => setLoading(false));
-    }
+  const onAddTask = (title: string) => {
+    addTask(title)
+      .then((newTask) => setTasks((prev) => [...prev, newTask]))
+      .catch((err) => setError(err.message));
+  };
+
+  const onToggle = (id: string, completed: boolean) => {
+    updateTask(id, { completed })
+      .then((updated) =>
+        setTasks((prev) => prev.map((t) => (t.id === updated.id ? updated : t))),
+      )
+      .catch((err) => setError(err.message));
+  };
+
+  const onDelete = (id: string) => {
+    deleteTask(id)
+      .then(() => setTasks((prev) => prev.filter((t) => t.id !== id)))
+      .catch((err) => setError(err.message));
   };
 
   React.useEffect(() => {
@@ -35,8 +45,14 @@ const App = () => {
   return (
     <div>
       <h1>Task List</h1>
-      <button onClick={onAddTask}>Add Task</button>
-      <TaskList tasks={tasks} loading={loading} error={error} />
+      <TaskForm onAdd={onAddTask} />
+      <TaskList
+        tasks={tasks}
+        loading={loading}
+        error={error}
+        onToggle={onToggle}
+        onDelete={onDelete}
+      />
     </div>
   );
 };
