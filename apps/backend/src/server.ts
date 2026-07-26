@@ -1,5 +1,5 @@
 import express from "express";
-import { addTask, deleteTask, getTasks } from "./store";
+import { addTask, deleteTask, getTasks, updateTask } from "./store";
 
 const app = express();
 const PORT = 3000;
@@ -26,6 +26,16 @@ app.post("/tasks", (req, res) => {
   }
   const task = addTask(title);
   res.status(201).json(task);
+});
+
+app.patch("/tasks/:id", (req, res) => {
+  const { id } = req.params;
+  const { title, completed } = req.body;
+  const task = updateTask(id, { title, completed });
+  if (!task) {
+    return res.status(404).json({ message: `Task with id ${id} not found` });
+  }
+  res.json(task);
 });
 
 app.delete("/tasks/:id", (req, res) => {

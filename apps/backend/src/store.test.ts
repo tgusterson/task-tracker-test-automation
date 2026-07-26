@@ -41,8 +41,10 @@ describe("Task Store", () => {
 
   it("should update a task", () => {
     const task = store.addTask("Task to Update");
-    store.updateTask(task.id, { title: "Updated Task", completed: true });
-    const updatedTask = store.getTasks().find((t) => t.id === task.id);
+    const updatedTask = store.updateTask(task.id, {
+      title: "Updated Task",
+      completed: true,
+    });
     expect(updatedTask).toEqual({
       id: task.id,
       title: "Updated Task",

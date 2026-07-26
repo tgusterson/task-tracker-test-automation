@@ -23,6 +23,7 @@ export const updateTask = (id: string, updatedTask: Partial<Task>) => {
   tasks = tasks.map((task) =>
     task.id === id ? { ...task, ...updatedTask } : task,
   );
+  return tasks.find((task) => task.id === id);
 };
 export const deleteTask = (id: string) => {
   tasks = tasks.filter((task) => task.id !== id);
