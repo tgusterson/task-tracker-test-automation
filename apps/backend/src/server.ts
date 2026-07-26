@@ -1,10 +1,11 @@
 import express from "express";
+import cors from "cors";
 import { addTask, deleteTask, getTasks, updateTask } from "./store";
 
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON request bodies
+app.use(cors());
 app.use(express.json());
 
 // Root endpoint to check if the API is running
