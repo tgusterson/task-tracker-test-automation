@@ -7,7 +7,7 @@ interface TaskFormProps {
 export const TaskForm = ({ onAdd }: TaskFormProps) => {
   const [title, setTitle] = React.useState("");
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     const trimmed = title.trim();
     if (!trimmed) return;
