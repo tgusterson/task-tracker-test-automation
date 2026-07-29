@@ -38,8 +38,8 @@ Managed as a pnpm workspace.
 - [x] GitHub Actions running backend unit tests on push to main
 
 ### Phase 2 — React UI & component tests
-- [ ] Frontend: task list UI (add/list/delete)
-- [ ] Frontend wired to backend API
+- [x] Frontend: task list UI (add/list/delete)
+- [x] Frontend wired to backend API
 - [ ] Component tests with React Testing Library (Vitest)
 - [ ] CI updated to run component tests alongside API tests
 
