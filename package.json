@@ -2,6 +2,9 @@
   "private": true,
   "name": "task-tracker-test-automation",
   "version": "0.0.1",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @workspace/backend --filter @workspace/frontend dev"
+  },
   "devDependencies": {
     "@vitest/coverage-v8": "4.1.10",
     "typescript": "^7.0.2"
