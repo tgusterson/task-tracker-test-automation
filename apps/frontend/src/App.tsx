@@ -18,7 +18,9 @@ const App = () => {
   const onToggle = (id: string, completed: boolean) => {
     updateTask(id, { completed })
       .then((updated) =>
-        setTasks((prev) => prev.map((t) => (t.id === updated.id ? updated : t))),
+        setTasks((prev) =>
+          prev.map((t) => (t.id === updated.id ? updated : t)),
+        ),
       )
       .catch((err) => setError(err.message));
   };
