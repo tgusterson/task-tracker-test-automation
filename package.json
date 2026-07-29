@@ -3,7 +3,10 @@
   "name": "task-tracker-test-automation",
   "version": "0.0.1",
   "scripts": {
-    "dev": "pnpm --parallel --filter @workspace/backend --filter @workspace/frontend dev"
+    "dev": "pnpm --parallel --filter @workspace/backend --filter @workspace/frontend dev",
+    "test": "pnpm --filter @workspace/backend --filter @workspace/frontend test",
+    "test:watch": "pnpm --parallel --filter @workspace/backend --filter @workspace/frontend test:watch",
+    "test:coverage": "pnpm --filter @workspace/backend --filter @workspace/frontend test:coverage"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "4.1.10",
