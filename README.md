@@ -29,7 +29,7 @@ Managed as a pnpm workspace.
 
 ## Roadmap
 
-### Phase 1 — API & unit tests (you are here)
+### Phase 1 — API & unit tests
 - [x] Monorepo scaffolding (pnpm workspaces)
 - [x] Backend: Express API + in-memory task store (CRUD)
 - [x] Backend: unit tests for the store, with coverage reporting
