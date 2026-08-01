@@ -41,8 +41,12 @@ app.patch("/tasks/:id", (req, res) => {
 
 app.delete("/tasks/:id", (req, res) => {
   const { id } = req.params;
-  deleteTask(id);
-  res.json({ message: `Task with id ${id} deleted` });
+  const deleteResponse = deleteTask(id);
+  const deleteMsg = deleteResponse.message;
+  if (deleteMsg.includes("deleted")) {
+    res.json({ message: deleteMsg });
+  }
+  return res.status(404).json({ message: deleteMsg });
 });
 
 // Gate listen by environment variable to avoid issues during testing
