@@ -65,4 +65,14 @@ describe("TaskForm", () => {
 
     expect(onAdd).not.toHaveBeenCalled();
   });
+
+  it("submits the form when pressing Enter", async () => {
+    const user = userEvent.setup();
+    const onAdd = vi.fn();
+    render(<TaskForm onAdd={onAdd} />);
+
+    await user.type(screen.getByLabelText("Task title"), "Buy milk{Enter}");
+
+    expect(onAdd).toHaveBeenCalledWith("Buy milk");
+  });
 });
