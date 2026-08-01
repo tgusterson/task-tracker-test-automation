@@ -10,6 +10,7 @@ const App = () => {
   const [error, setError] = React.useState<string | null>(null);
 
   const onAddTask = (title: string) => {
+    setError(null);
     addTask(title)
       .then((newTask) => setTasks((prev) => [...prev, newTask]))
       .catch((err) => setError(err.message));
