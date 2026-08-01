@@ -7,7 +7,9 @@ describe("TaskForm", () => {
     render(<TaskForm onAdd={vi.fn()} />);
 
     expect(screen.getByLabelText("Task title")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Add Task" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Add Task" }),
+    ).toBeInTheDocument();
   });
 
   it("calls onAdd with the entered title on submit", async () => {
