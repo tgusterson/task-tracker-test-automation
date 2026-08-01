@@ -6,7 +6,13 @@
     "dev": "pnpm --parallel --filter @workspace/backend --filter @workspace/frontend dev",
     "test": "pnpm --filter @workspace/backend --filter @workspace/frontend test",
     "test:watch": "pnpm --parallel --filter @workspace/backend --filter @workspace/frontend test:watch",
-    "test:coverage": "pnpm --filter @workspace/backend --filter @workspace/frontend test:coverage"
+    "test:coverage": "pnpm --filter @workspace/backend --filter @workspace/frontend test:coverage",
+    "test:frontend": "pnpm --filter @workspace/frontend test",
+    "test:backend": "pnpm --filter @workspace/backend test",
+    "test:frontend:watch": "pnpm --filter @workspace/frontend test:watch",
+    "test:backend:watch": "pnpm --filter @workspace/backend test:watch",
+    "test:frontend:coverage": "pnpm --filter @workspace/frontend test:coverage",
+    "test:backend:coverage": "pnpm --filter @workspace/backend test:coverage"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "4.1.10",
