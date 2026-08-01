@@ -16,15 +16,19 @@ export const TaskList = ({
   onToggle,
   onDelete,
 }: TaskListProps) => {
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="text-gray-500">Loading...</div>;
 
   return (
     <div>
-      {error && <div className="text-red-50">Error: {error}</div>}
+      {error && (
+        <div className="mb-3 rounded-md bg-red-50 px-3 py-2 text-sm text-red-600">
+          Error: {error}
+        </div>
+      )}
       {tasks.length === 0 ? (
-        <div>No tasks available.</div>
+        <div className="text-gray-500">No tasks available.</div>
       ) : (
-        <ul>
+        <ul className="divide-y divide-gray-200">
           {tasks.map((task) => (
             <TaskItem
               key={task.id}

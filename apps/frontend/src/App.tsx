@@ -46,8 +46,8 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Task List</h1>
+    <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
+      <h1 className="pb-1.5">Task List</h1>
       <TaskForm onAdd={onAddTask} />
       <TaskList
         tasks={tasks}
