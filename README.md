@@ -44,7 +44,7 @@ Managed as a pnpm workspace.
 - [x] CI updated to run component tests alongside API tests
 
 ### Phase 3 — Integration & e2e tests
-- [ ] Integration tests against the API — including sad-path cases (bad
+- [x] Integration tests against the API — including sad-path cases (bad
       payloads, missing fields → correct 400/500 responses), not just happy path
       (e.g. PATCH /tasks/:id with only `completed` must not wipe `title`)
 - [ ] End-to-end tests (Playwright), full flow from UI to API
