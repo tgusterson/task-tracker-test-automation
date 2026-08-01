@@ -44,7 +44,7 @@ app.delete("/tasks/:id", (req, res) => {
   const deleteResponse = deleteTask(id);
   const deleteMsg = deleteResponse.message;
   if (deleteMsg.includes("deleted")) {
-    res.json({ message: deleteMsg });
+    return res.json({ message: deleteMsg });
   }
   return res.status(404).json({ message: deleteMsg });
 });
