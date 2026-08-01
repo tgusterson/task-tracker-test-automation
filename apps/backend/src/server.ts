@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { addTask, deleteTask, getTasks, updateTask } from "./store";
 
-const app = express();
+export const app: express.Express = express();
 const PORT = 3000;
 
 app.use(cors());
@@ -45,7 +45,10 @@ app.delete("/tasks/:id", (req, res) => {
   res.json({ message: `Task with id ${id} deleted` });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Gate listen by environment variable to avoid issues during testing
+if (process.env.NODE_ENV !== "test") {
+  // Start the server
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
