@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { addTask, deleteTask, getTasks, updateTask } from "./store";
 
-const app = express();
+export const app: express.Express = express();
 const PORT = 3000;
 
 app.use(cors());
@@ -41,11 +41,18 @@ app.patch("/tasks/:id", (req, res) => {
 
 app.delete("/tasks/:id", (req, res) => {
   const { id } = req.params;
-  deleteTask(id);
-  res.json({ message: `Task with id ${id} deleted` });
+  const deleteResponse = deleteTask(id);
+  const deleteMsg = deleteResponse.message;
+  if (deleteMsg.includes("deleted")) {
+    res.json({ message: deleteMsg });
+  }
+  return res.status(404).json({ message: deleteMsg });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Gate listen by environment variable to avoid issues during testing
+if (process.env.NODE_ENV !== "test") {
+  // Start the server
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}

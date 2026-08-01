@@ -29,9 +29,10 @@ export const updateTask = (id: string, updatedTask: Partial<Task>) => {
   return tasks.find((task) => task.id === id);
 };
 export const deleteTask = (id: string) => {
-  tasks = tasks.filter((task) => task.id !== id);
-  if (!tasks.find((task) => task.id === id)) {
-    return { message: `Task with id ${id} deleted` };
-  }
-  return { message: `Task with id ${id} not found` };
+  const remaining = tasks.filter((task) => task.id !== id);
+  const found = remaining.length !== tasks.length;
+  tasks = remaining;
+  return found
+    ? { message: `Task with id ${id} deleted` }
+    : { message: `Task with id ${id} not found` };
 };
