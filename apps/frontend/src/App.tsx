@@ -17,13 +17,20 @@ const App = () => {
   };
 
   const onToggle = (id: string, completed: boolean) => {
+    const previous = tasks;
+    setTasks((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed } : t)),
+    );
     updateTask(id, { completed })
       .then((updated) =>
         setTasks((prev) =>
           prev.map((t) => (t.id === updated.id ? updated : t)),
         ),
       )
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setTasks(previous);
+        setError(err.message);
+      });
   };
 
   const onDelete = (id: string) => {
