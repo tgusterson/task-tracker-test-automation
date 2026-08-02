@@ -45,17 +45,17 @@ Managed as a pnpm workspace.
 - [x] Integration tests against the API — including sad-path cases (bad
       payloads, missing fields → correct 400/500 responses), not just happy path
       (e.g. PATCH /tasks/:id with only `completed` must not wipe `title`)
-- [ ] End-to-end tests (Playwright), full flow from UI to API
-- [ ] CI updated to run the Playwright suite
+- [x] End-to-end tests (Playwright), full flow from UI to API
+- [x] CI updated to run the Playwright suite
 
 ### Phase 4 — Iterative enhancements
 - [ ] Swap in-memory store for SQLite, as an isolated, visible change with
       tests staying green throughout
-- [ ] Seed/teardown strategy for reliable, isolated test data
+- [ ] Seed/teardown strategy for reliable, isolated test data (currently have fixture to delete all tasks made by each E2E test)
 - [ ] Mix of real-API tests and mocked-network tests (network interception),
       to show when each strategy is appropriate
-- [ ] Parallel test execution across CI workers
-- [ ] Upload Playwright HTML report / traces / screenshots as CI artifacts
+- [x] Parallel test execution across CI workers
+- [x] Upload Playwright HTML report / traces / screenshots as CI artifacts
       on failure, for debugging straight from a failed run
 - [ ] README polish: architecture diagram, screenshots of a passing
       pipeline and the Playwright HTML report
