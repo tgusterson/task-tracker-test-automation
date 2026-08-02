@@ -20,9 +20,7 @@ is the testing and automation around it, not the app's feature set.
 apps/
   frontend/   React app (Vite, Tailwind)
   backend/    Express API + task store
-tests/
-  integration/  API tests against the running backend
-  e2e/          Playwright tests against the running app
+e2e/          Playwright tests against the running app
 ```
 
 Managed as a pnpm workspace.
