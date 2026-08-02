@@ -36,3 +36,34 @@ jobs:
         run: pnpm --filter @workspace/frontend exec tsc --noEmit
       - name: Run tests
         run: pnpm --filter @workspace/frontend test:ci
+
+  e2e:
+    runs-on: ubuntu-latest
+    container:
+      # Version must match the @playwright/test version in package.json,
+      # or browser binaries in this image won't match the test runner.
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - name: Run e2e tests
+        run: pnpm test:e2e
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots
+          path: test-results/**/*.png
+          retention-days: 14
