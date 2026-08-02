@@ -49,16 +49,18 @@ Managed as a pnpm workspace.
 - [x] CI updated to run the Playwright suite
 
 ### Phase 4 — Iterative enhancements
-- [ ] Swap in-memory store for SQLite, as an isolated, visible change with
-      tests staying green throughout
-- [ ] Seed/teardown strategy for reliable, isolated test data (currently have fixture to delete all tasks made by each E2E test)
-- [ ] Mix of real-API tests and mocked-network tests (network interception),
+- [x] Teardown strategy for reliable, isolated test data
+- [x] Mix of real-API tests and mocked-network tests (network interception),
       to show when each strategy is appropriate
 - [x] Parallel test execution across CI workers
 - [x] Upload Playwright HTML report / traces / screenshots as CI artifacts
       on failure, for debugging straight from a failed run
+- [ ] Swap in-memory store for SQLite, as an isolated, visible change with
+      tests staying green throughout
 - [ ] README polish: architecture diagram, screenshots of a passing
       pipeline and the Playwright HTML report
+- [ ] Extra app features e.g. a basic authentication layer, to show testing of auth flows (login, logout, session
+      expiration, etc.)
 
 ## Running locally
 

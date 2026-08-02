@@ -55,7 +55,11 @@ test("shows an error message when the API returns an error", async ({
 
   const title = `Buy milk ${Date.now()}`;
 
-  // Intercept the POST request to /tasks and return a 500 error
+  // Mocked at the network layer rather than hitting the real API: server.ts
+  // has no code path that returns a 500, so this is the only way to exercise
+  // the frontend's error-handling for a server failure. Every other test in
+  // this file hits the real backend — mocking is the exception, used only
+  // where the real system can't produce the scenario being tested.
   await page.route("**/tasks", (route) => {
     if (route.request().method() !== "POST") return route.continue();
     route.fulfill({
