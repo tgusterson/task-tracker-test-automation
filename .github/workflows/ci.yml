@@ -43,6 +43,10 @@ jobs:
       # Version must match the @playwright/test version in package.json,
       # or browser binaries in this image won't match the test runner.
       image: mcr.microsoft.com/playwright:v1.62.1-noble
+    # Firefox refuses to launch as root unless $HOME is owned by root,
+    # container.env is silently overridden per-step by the runner.
+    env:
+      HOME: /root
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
