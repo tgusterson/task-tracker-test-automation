@@ -10,7 +10,7 @@ is the testing and automation around it, not the app's feature set.
 ## Stack
 
 - **Frontend** — React + Vite + TypeScript + Tailwind CSS
-- **Backend** — Express + TypeScript (in-memory store now, SQLite planned)
+- **Backend** — Express + TypeScript + SQLite (via better-sqlite3)
 - **Testing** — Vitest (unit/integration), Playwright (e2e)
 - **CI** — GitHub Actions
 
@@ -55,7 +55,7 @@ Managed as a pnpm workspace.
 - [x] Parallel test execution across CI workers
 - [x] Upload Playwright HTML report / traces / screenshots as CI artifacts
       on failure, for debugging straight from a failed run
-- [ ] Swap in-memory store for SQLite, as an isolated, visible change with
+- [x] Swap in-memory store for SQLite, as an isolated, visible change with
       tests staying green throughout
 - [ ] README polish: architecture diagram, screenshots of a passing
       pipeline and the Playwright HTML report
