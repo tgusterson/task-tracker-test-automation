@@ -1,7 +1,7 @@
 import { Task } from "@workspace/shared";
 import { randomUUID } from "crypto";
-import { createConnection } from "./db/connection";
-import { createTasksTable } from "./db/schema";
+import { createConnection } from "./db/connection.js";
+import { createTasksTable } from "./db/schema.js";
 
 interface TaskRow {
   id: string;

@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { addTask, deleteTask, getTasks, updateTask } from "./store";
+import { addTask, deleteTask, getTasks, updateTask } from "./store.js";
 
 export const app: express.Express = express();
 const PORT = 3000;
